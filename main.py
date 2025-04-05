@@ -75,17 +75,25 @@ def handle_inputs():
             return handle_inputs()
 
 
-def check_if_good_password():
-    pass
+def check_if_good_password(p):
+    if len(p) < 8:
+        return "invalid"
+    else:
+        return "valid"
 
 def website_creator(G):
     os.system("cls")
     if "." in G:
         b = input("Username: ")
         c = input("Password: ")
-        add_pass(G, b, c)
-        time.sleep(2)
-        pass_hub()
+        if check_if_good_password(c) == "invalid":
+            print("invalid password try a new one... (minimum 8 characters)")
+            time.sleep(2)
+            pass_hub()
+        else:
+            add_pass(G, b, c)
+            time.sleep(2)
+            pass_hub()
 
 def pass_hub():
     os.system("cls")
