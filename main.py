@@ -61,10 +61,16 @@ def handle_inputs():
                 time.sleep(1)
                 os.system("cls")
                 first_password = input("Please enter the password you want for the website: ")
-                add_pass(first_site, first_username, first_password)
-                print(f"[*] Password added for {first_site}!")
-                time.sleep(3)
-                pass_hub()
+                if check_if_good_password(first_password) == "valid":
+                    add_pass(first_site, first_username, first_password)
+                    print(f"[*] Password added for {first_site}!")
+                    time.sleep(3)
+                    pass_hub()
+                elif check_if_good_password(first_password) == "invalid":
+                    os.system("cls")
+                    print("invalid password try a new one... ")
+                    time.sleep(3)
+                    return handle_inputs()
             except Exception as e:
                 print(f"[!] {Exception}")
                 time.sleep(4)
